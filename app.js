@@ -4,9 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var webpack = require('webpack');
+var webpackMiddleware = require('webpack-dev-middleware');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+//var routes = require('./routes/index');
 
 var app = express();
 
@@ -22,8 +23,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+if (process.env.NODE_ENV === 'development') {
+  app.use(webpackMiddleware(webpack(require('./webpack.config.js')), {
+    noInfo: false,
+    publicPath: '/',
+    stats: {
+      colors: true
+    }
+  }));
+}
+
+app.use('/', function(req, res, next) {
+  if (req.path === '/' || req.path === 'index.html') {
+    res.sendFile(__dirname + '/public/index.html');
+  } else {
+    next();
+  }
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
