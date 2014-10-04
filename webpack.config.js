@@ -13,6 +13,8 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js$/, loaders: ['jsx-loader', 'jsx?harmony'] },
+      { test: /\.css/, loader: 'style-loader!css-loader' },
+      { test: /\.scss$/, loader: 'style!css!sass' }
     ]
   }
 };
