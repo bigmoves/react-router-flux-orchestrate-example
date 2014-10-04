@@ -2,11 +2,11 @@
 
 var React = require('react');
 
-var Foo = module.exports = React.createClass({
+var IndexRoute = module.exports = React.createClass({
   render: function() {
     return (
       <div>
-        <h1>Foo</h1>
+        <h1>Index</h1>
       </div>
     );
   }

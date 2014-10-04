@@ -2,10 +2,11 @@
 
 var React = require('react');
 
-var App = module.exports = React.createClass({
+var AppRoute = module.exports = React.createClass({
   render: function() {
     return (
       <div className="application">
+        <h1>Application</h1>
         {this.props.activeRouteHandler()}
       </div>
     );

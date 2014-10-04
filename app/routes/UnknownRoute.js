@@ -2,7 +2,7 @@
 
 var React = require('react');
 
-var Unknown = module.exports = React.createClass({
+var UnknownRoute = module.exports = React.createClass({
   render: function() {
     return (
       <div>
