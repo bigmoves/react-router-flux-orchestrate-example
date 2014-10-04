@@ -1,15 +1,3 @@
-/** @jsx React.DOM */
-
 var React = require('react');
-
-var App = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <h1>Hello, there.</h1>
-      </div>
-    );
-  }
-});
-
-React.renderComponent(<App/>, document.body);
+var routes = require('./router');
+React.renderComponent(routes, document.body);

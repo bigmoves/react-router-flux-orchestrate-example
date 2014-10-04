@@ -33,12 +33,8 @@ if (process.env.NODE_ENV === 'development') {
   }));
 }
 
-app.use('/', function(req, res, next) {
-  if (req.path === '/' || req.path === 'index.html') {
-    res.sendFile(__dirname + '/public/index.html');
-  } else {
-    next();
-  }
+app.use('*', function(req, res, next) {
+  res.sendFile(__dirname + '/public/index.html');
 });
 
 // catch 404 and forward to error handler
