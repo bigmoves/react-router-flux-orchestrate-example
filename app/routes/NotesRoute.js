@@ -2,11 +2,11 @@
 
 var React = require('react');
 
-var FooRoute = module.exports = React.createClass({
+var NotesRoute = module.exports = React.createClass({
   render() {
     return (
       <div>
-        <h1>Foo</h1>
+        <h1>Notes</h1>
         {this.props.activeRouteHandler()}
       </div>
     );

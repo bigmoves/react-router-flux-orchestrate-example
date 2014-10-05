@@ -2,7 +2,7 @@
 
 var React = require('react');
 
-var FooForm = module.exports = React.createClass({
+var NoteForm = module.exports = React.createClass({
 
   componentDidMount() {
     this.refs.text.getDOMNode().focus();

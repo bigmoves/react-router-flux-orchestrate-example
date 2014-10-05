@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'development') {
   }));
 }
 
-app.post('/item', function(req, res) {
+app.post('/notes', function(req, res) {
   res.json({ text: req.body.text });
   // res.status(404).json({ msg: 'write failed' }).end();
 });

@@ -2,9 +2,9 @@
 
 var React = require('react');
 var Router = require('react-router');
-var Form = require('../../components/foo/FooForm');
-var Store = require('../../stores/Store');
-var Actions = require('../../actions/Actions');
+var NoteForm = require('../../components/notes/NoteForm');
+var NoteStore = require('../../stores/NoteStore');
+var NoteActions = require('../../actions/NoteActions');
 
 var FooNewRoute = module.exports = React.createClass({
   mixins: [ Router.Transitions ],
@@ -16,10 +16,9 @@ var FooNewRoute = module.exports = React.createClass({
   },
 
   handleSubmit(formData) {
-    var self = this;
-    Actions.create(formData.text)
+    NoteActions.createNote(formData.text)
       .then(() => {
-        self.transitionTo('foo');
+        this.transitionTo('notes');
       })
       .catch(error => {
         self.setState({ error: error.data.msg });
@@ -37,8 +36,8 @@ var FooNewRoute = module.exports = React.createClass({
 
     return (
       <div>
-        <h1>New Foo</h1>
-        <Form onSubmit={this.handleSubmit} />
+        <h1>New Note</h1>
+        <NoteForm onSubmit={this.handleSubmit} />
         {error}
       </div>
     );

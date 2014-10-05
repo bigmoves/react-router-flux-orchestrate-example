@@ -2,8 +2,8 @@ var axios = require('axios');
 
 module.exports = {
 
-  create(text) {
-    return axios.post('/item', { text: text })
+  createNote(text) {
+    return axios.post('/notes', { text: text })
       .then(response => {
         return response.data;
       });

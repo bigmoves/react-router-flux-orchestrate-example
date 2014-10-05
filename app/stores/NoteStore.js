@@ -5,28 +5,28 @@ class Store extends BaseStore {
   constructor() {
     super();
 
-    this._items = {};
+    this._notes = {};
     this._isLoading = false;
   }
 
   getById(id) {
-    return this._items[id];
+    return this._notes[id];
   }
 
   getAll() {
-    return this._items;
+    return this._notes;
   }
 
   handleDispatch(action) {
     console.log(action);
     switch(action.type) {
-      case ActionTypes.Foo.CREATE_STARTED:
+      case ActionTypes.Notes.CREATE_STARTED:
         this._isLoading = true;
         this.emitChange();
         break;
 
-      case ActionTypes.Foo.CREATE_COMPLETED:
-        this._items[action.itemID] = action.text;
+      case ActionTypes.Notes.CREATE_COMPLETED:
+        this._notes[action.noteID] = action.text;
         this._isLoading = false;
         //this.emitChange();
         break;
