@@ -4,24 +4,15 @@ var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
 var Store = require('../../stores/Store');
-
-function getStateFromStores() {
-  return {
-    items: Store.getAll()
-  };
-}
+var StoreMixin = require('../../mixins/StoreMixin');
 
 var FooIndexRoute = module.exports = React.createClass({
-   getInitialState: function() {
-     return getStateFromStores();
-   },
+  mixins: [ StoreMixin(Store) ],
 
-  componentDidMount: function() {
-    Store.addChangeListener(this._onChange);
-  },
-
-  componentWillUnmount: function() {
-    Store.removeChangeListener(this._onChange);
+  getStateFromStores: function() {
+    return {
+      items: Store.getAll()
+    };
   },
 
   render: function() {
@@ -40,10 +31,6 @@ var FooIndexRoute = module.exports = React.createClass({
         </ul>
       </div>
     );
-  },
-
-  _onChange: function() {
-    this.setState(getStateFromStores());
   }
 });
 
