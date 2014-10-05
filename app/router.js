@@ -9,8 +9,8 @@ var NotFoundRoute = Router.NotFoundRoute;
 var App = require('./routes/AppRoute');
 var Index = require('./routes/IndexRoute');
 var Foo = require('./routes/FooRoute');
-var FooIndex = require('./routes/Foo/FooIndexRoute');
-var FooNew = require('./routes/Foo/FooNewRoute');
+var FooIndex = require('./routes/foo/FooIndexRoute');
+var FooNew = require('./routes/foo/FooNewRoute');
 var Unknown = require('./routes/UnknownRoute');
 
 module.exports = (

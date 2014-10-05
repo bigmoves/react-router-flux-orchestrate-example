@@ -33,6 +33,11 @@ if (process.env.NODE_ENV === 'development') {
   }));
 }
 
+app.post('/item', function(req, res) {
+  res.json({ text: req.body.text });
+  // res.status(404).json({ msg: 'write failed' }).end();
+});
+
 app.use('*', function(req, res, next) {
   res.sendFile(__dirname + '/public/index.html');
 });
