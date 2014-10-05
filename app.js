@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var webpack = require('webpack');
 var webpackMiddleware = require('webpack-dev-middleware');
 
-//var routes = require('./routes/index');
+var notes = require('./routes/notes');
 
 var app = express();
 
@@ -33,10 +33,7 @@ if (process.env.NODE_ENV === 'development') {
   }));
 }
 
-app.post('/notes', function(req, res) {
-  res.json({ text: req.body.text });
-  // res.status(404).json({ msg: 'write failed' }).end();
-});
+app.use('/api/notes', notes);
 
 app.use('*', function(req, res, next) {
   res.sendFile(__dirname + '/public/index.html');

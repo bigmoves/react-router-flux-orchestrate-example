@@ -1,7 +1,8 @@
 var ActionTypes = require('../ActionTypes');
 var BaseStore = require('./BaseStore');
+var NotesAPI = require('../utils/NotesAPI');
 
-class Store extends BaseStore {
+class NoteStore extends BaseStore {
   constructor() {
     super();
 
@@ -9,8 +10,23 @@ class Store extends BaseStore {
     this._isLoading = false;
   }
 
+  _addNotes(notes) {
+    notes.forEach(note => {
+      if (!this._notes[note.id]) {
+        this._notes[note.id] = note;
+      }
+    });
+  }
+
   getById(id) {
     return this._notes[id];
+  }
+
+  listAll() {
+    return NotesAPI.list()
+      .then(notes => {
+        this._addNotes(notes);
+      });
   }
 
   getAll() {
@@ -26,15 +42,14 @@ class Store extends BaseStore {
         break;
 
       case ActionTypes.Notes.CREATE_COMPLETED:
-        this._notes[action.noteID] = action.text;
+        this._notes[action.noteID] = action.note;
         this._isLoading = false;
-        //this.emitChange();
         break;
     }
   }
 
 }
 
-var store = new Store();
-window.store = store;
-module.exports = store;
+var noteStore = new NoteStore();
+window.NoteStore = noteStore;
+module.exports = noteStore;
