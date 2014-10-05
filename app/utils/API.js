@@ -2,9 +2,9 @@ var axios = require('axios');
 
 module.exports = {
 
-  create: function(text) {
+  create(text) {
     return axios.post('/item', { text: text })
-      .then(function(response) {
+      .then(response => {
         return response.data;
       });
   }

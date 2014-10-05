@@ -4,11 +4,11 @@ var React = require('react');
 
 var FooForm = module.exports = React.createClass({
 
-  componentDidMount: function() {
+  componentDidMount() {
     this.refs.text.getDOMNode().focus();
   },
 
-  handleSubmit: function(e) {
+  handleSubmit(e) {
     e.preventDefault();
     var form = this.getDOMNode();
     var text = this.refs.text.getDOMNode().value;
@@ -19,7 +19,7 @@ var FooForm = module.exports = React.createClass({
     form.reset();
   },
 
-  render: function() {
+  render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <input

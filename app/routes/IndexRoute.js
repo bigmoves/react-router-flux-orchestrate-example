@@ -3,7 +3,7 @@
 var React = require('react');
 
 var IndexRoute = module.exports = React.createClass({
-  render: function() {
+  render() {
     return (
       <div>
         <h1>Index</h1>

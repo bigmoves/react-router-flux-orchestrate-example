@@ -4,14 +4,14 @@ var API = require('../utils/API');
 
 module.exports = {
 
-  create: function(text) {
+  create(text) {
     var itemID = 'ID_' + Date.now();
     Dispatcher.dispatch({
       type: ActionTypes.Foo.CREATE_STARTED,
       itemID: itemID
     });
     return API.create(text)
-      .then(function(data) {
+      .then(data => {
         Dispatcher.dispatch({
           type: ActionTypes.Foo.CREATE_COMPLETED,
           itemID: itemID,

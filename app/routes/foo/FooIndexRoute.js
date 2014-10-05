@@ -9,14 +9,14 @@ var StoreMixin = require('../../mixins/StoreMixin');
 var FooIndexRoute = module.exports = React.createClass({
   mixins: [ StoreMixin(Store) ],
 
-  getStateFromStores: function() {
+  getStateFromStores() {
     return {
       items: Store.getAll()
     };
   },
 
-  render: function() {
-    var items = Object.keys(this.state.items).map(function(itemID) {
+  render() {
+    var items = Object.keys(this.state.items).map(itemID => {
       return (
         <li key={itemID}>{this.state.items[itemID]}</li>
       );

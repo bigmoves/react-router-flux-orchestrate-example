@@ -9,24 +9,24 @@ var Actions = require('../../actions/Actions');
 var FooNewRoute = module.exports = React.createClass({
   mixins: [ Router.Transitions ],
 
-  getInitialState: function() {
+  getInitialState() {
     return {
       error: null
     };
   },
 
-  handleSubmit: function(formData) {
+  handleSubmit(formData) {
     var self = this;
     Actions.create(formData.text)
-      .then(function() {
+      .then(() => {
         self.transitionTo('foo');
       })
-      .catch(function(error) {
+      .catch(error => {
         self.setState({ error: error.data.msg });
       });
   },
 
-  render: function() {
+  render() {
     var error;
 
     if (this.state.error) {

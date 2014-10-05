@@ -3,7 +3,7 @@
 var React = require('react');
 
 var FooRoute = module.exports = React.createClass({
-  render: function() {
+  render() {
     return (
       <div>
         <h1>Foo</h1>

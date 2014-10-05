@@ -3,23 +3,23 @@ module.exports = function() {
 
   return {
 
-    getInitialState: function() {
+    getInitialState() {
       return this.getStateFromStores();
     },
 
-    componentDidMount: function() {
-      stores.forEach(function(store) {
+    componentDidMount() {
+      stores.forEach(store => {
         store.addChangeListener(this._onChange);
       }, this);
     },
 
-    componentWillUnmount: function() {
-      stores.forEach(function(store) {
+    componentWillUnmount() {
+      stores.forEach(store => {
         store.removeChangeListener(this._onChange);
       }, this);
     },
 
-    _onChange: function() {
+    _onChange() {
       this.setState(this.getStateFromStores());
     }
   };
