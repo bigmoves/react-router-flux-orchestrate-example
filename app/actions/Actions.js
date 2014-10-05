@@ -11,11 +11,11 @@ module.exports = {
       itemID: itemID
     });
     return API.create(text)
-      .then(function(response) {
+      .then(function(data) {
         Dispatcher.dispatch({
           type: ActionTypes.Foo.CREATE_COMPLETED,
           itemID: itemID,
-          text: response.data.text
+          text: data.text
         });
       });
   }
