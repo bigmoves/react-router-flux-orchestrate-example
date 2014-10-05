@@ -7,7 +7,7 @@ var Store = require('../../stores/Store');
 var Actions = require('../../actions/Actions');
 
 var FooNewRoute = module.exports = React.createClass({
-  //mixins: [ Router.Transitions ],
+  mixins: [ Router.Transitions ],
 
   getInitialState: function() {
     return {
@@ -19,7 +19,7 @@ var FooNewRoute = module.exports = React.createClass({
     var self = this;
     Actions.create(formData.text)
       .then(function() {
-        Router.transitionTo('foo');
+        self.transitionTo('foo');
       })
       .catch(function(error) {
         self.setState({ error: error.data.msg });
