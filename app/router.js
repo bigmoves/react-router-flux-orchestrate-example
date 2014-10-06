@@ -12,6 +12,7 @@ var Notes = require('./routes/NotesRoute');
 var NotesIndex = require('./routes/notes/NotesIndexRoute');
 var Note = require('./routes/notes/NoteRoute');
 var NotesNew = require('./routes/notes/NotesNewRoute');
+var NoteEdit = require('./routes/notes/NoteEditRoute');
 var Unknown = require('./routes/UnknownRoute');
 
 module.exports = (
@@ -22,6 +23,7 @@ module.exports = (
         <DefaultRoute handler={NotesIndex} />
         <Route name="note" path="/note/:noteID" handler={Note} />
         <Route name="add-note" path="new" handler={NotesNew} />
+        <Route name="edit-note" path="/note/:noteID/edit" handler={NoteEdit} />
       </Route>
     </Route>
     <NotFoundRoute handler={Unknown} />

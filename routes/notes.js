@@ -34,8 +34,26 @@ router.post('/', function(req, res) {
     });
 });
 
-router.delete('/:id', function(req, res) {
+router.put('/:id', function(req, res) {
+  delete req.body.id;
+  db.put('notes', req.params.id, req.body)
+    .then(function(result) {
+      req.body.id = req.params.id;
+      res.status(result.statusCode).json(req.body);
+    })
+    .fail(function(err) {
+      res.status(err.statusCode).json(err.body.message);
+    });
+});
 
+router.delete('/:id', function(req, res) {
+  db.remove('notes', req.params.id, true)
+    .then(function(result) {
+      res.status(result.statusCode).end();
+    })
+    .fail(function(err) {
+      res.status(err.statusCode).json(err.body.message);
+    });
 });
 
 module.exports = router;

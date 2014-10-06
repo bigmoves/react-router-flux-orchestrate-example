@@ -55,6 +55,16 @@ class NoteStore extends BaseStore {
         this._notes[action.noteID] = action.note;
         this._isLoading = false;
         break;
+
+      case ActionTypes.Notes.EDIT_COMPLETED:
+        this._notes[action.noteID] = action.note;
+        this._isLoading = false;
+        break;
+
+      case ActionTypes.Notes.DELETE_COMPLETED:
+        delete this._notes[action.noteID];
+        this._isLoading = false;
+        break;
     }
   }
 

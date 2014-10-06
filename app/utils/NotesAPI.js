@@ -20,8 +20,22 @@ module.exports = {
       });
   },
 
-  createNote(text) {
-    return axios.post('/api/notes', { text: text })
+  createNote(note) {
+    return axios.post('/api/notes', note)
+      .then(response => {
+        return response.data;
+      });
+  },
+
+  editNote(note) {
+    return axios.put(`/api/notes/${note.id}`, note)
+      .then(response => {
+        return response.data;
+      });
+  },
+
+  deleteNote(noteID) {
+    return axios.delete(`/api/notes/${noteID}`)
       .then(response => {
         return response.data;
       });

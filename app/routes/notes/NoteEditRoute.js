@@ -6,22 +6,29 @@ var NoteForm = require('../../components/notes/NoteForm');
 var NoteStore = require('../../stores/NoteStore');
 var NoteActions = require('../../actions/NoteActions');
 
-var FooNewRoute = module.exports = React.createClass({
+var FooEditRoute = module.exports = React.createClass({
   mixins: [ Router.Transitions ],
+
+  statics: {
+    willTransitionTo(transition, params) {
+      return transition.wait(NoteStore.fetchById(params.noteID));
+    }
+  },
 
   getInitialState() {
     return {
+      note: NoteStore.getById(this.props.params.noteID),
       error: null
     };
   },
 
   handleSubmit(note) {
-    NoteActions.createNote(note)
+    NoteActions.editNote(note)
       .then(note => {
         this.transitionTo('note', { noteID: note.id });
       })
       .catch(error => {
-        self.setState({ error: error.data.msg });
+        self.setState({ error: error.data });
       });
   },
 
@@ -36,11 +43,13 @@ var FooNewRoute = module.exports = React.createClass({
 
     return (
       <div>
-        <h1>New Note</h1>
-        <NoteForm onSubmit={this.handleSubmit} />
+        <h1>Edit Note</h1>
+        <NoteForm
+          note={this.state.note}
+          onSubmit={this.handleSubmit}
+        />
         {error}
       </div>
     );
   }
 });
-

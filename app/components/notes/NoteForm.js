@@ -4,32 +4,45 @@ var React = require('react');
 
 var NoteForm = module.exports = React.createClass({
 
+  propTypes: {
+    note: React.PropTypes.object
+  },
+
+  getInitialState() {
+    var note = this.props.note || {};
+    return {
+      text: note.text || ''
+    };
+  },
+
   componentDidMount() {
     this.refs.text.getDOMNode().focus();
   },
 
-  handleSubmit(e) {
-    e.preventDefault();
-    var form = this.getDOMNode();
-    var text = this.refs.text.getDOMNode().value;
-
-    this.props.onSubmit({
-      text: text
-    });
-    form.reset();
+  handleSubmit() {
+    var note = this.props.note || {};
+    note.text = this.state.text;
+    this.props.onSubmit(note);
+    this.setState({ text: '' });
   },
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div>
         <input
           ref="text"
           type="text"
           placeholder="Enter text..."
+          value={this.state.text}
+          onChange={this._onTextChange}
         />
-        <button type="submit">Submit</button>
-      </form>
+        <button onClick={this.handleSubmit}>Submit</button>
+      </div>
     );
+  },
+
+  _onTextChange(e) {
+    this.setState({ text: e.target.value });
   }
 });
 
