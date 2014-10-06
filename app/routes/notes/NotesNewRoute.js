@@ -17,8 +17,8 @@ var FooNewRoute = module.exports = React.createClass({
 
   handleSubmit(formData) {
     NoteActions.createNote(formData.text)
-      .then(() => {
-        this.transitionTo('notes');
+      .then(note => {
+        this.transitionTo('note', { noteID: note.id });
       })
       .catch(error => {
         self.setState({ error: error.data.msg });

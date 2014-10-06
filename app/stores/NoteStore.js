@@ -18,6 +18,16 @@ class NoteStore extends BaseStore {
     });
   }
 
+  fetchById(noteID) {
+    if (!this._notes[noteID]) {
+      return NotesAPI.fetchById(noteID)
+        .then(note => {
+          this._notes[note.id] = note;
+        });
+    }
+    return;
+  }
+
   getById(id) {
     return this._notes[id];
   }

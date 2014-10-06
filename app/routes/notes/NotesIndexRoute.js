@@ -18,7 +18,11 @@ var NotesIndexRoute = module.exports = React.createClass({
   render() {
     var notes = Object.keys(this.state.notes).map(noteID => {
       return (
-        <li key={noteID}>{this.state.notes[noteID].text}</li>
+        <li key={noteID}>
+          <Link to="note" params={{ noteID: noteID }}>
+            {this.state.notes[noteID].text}
+          </Link>
+        </li>
       );
     }, this);
 

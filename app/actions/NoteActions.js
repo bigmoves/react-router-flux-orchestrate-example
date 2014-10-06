@@ -12,6 +12,7 @@ module.exports = {
           noteID: data.id,
           note: data
         });
+        return data;
       });
   }
 

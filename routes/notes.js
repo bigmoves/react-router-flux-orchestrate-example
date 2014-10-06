@@ -13,7 +13,14 @@ router.get('/', function(req, res) {
 });
 
 router.get('/:id', function(req, res) {
-
+  db.get('notes', req.params.id)
+    .then(function(result) {
+      result.body.id = req.params.id;
+      res.status(result.statusCode).json(result.body);
+    })
+    .fail(function(err) {
+      res.status(err.statusCode).json(err.body.message);
+    });
 });
 
 router.post('/', function(req, res) {

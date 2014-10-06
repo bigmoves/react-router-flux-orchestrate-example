@@ -10,13 +10,13 @@ module.exports = function() {
     componentDidMount() {
       stores.forEach(store => {
         store.addChangeListener(this._onChange);
-      }, this);
+      });
     },
 
     componentWillUnmount() {
       stores.forEach(store => {
         store.removeChangeListener(this._onChange);
-      }, this);
+      });
     },
 
     _onChange() {

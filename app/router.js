@@ -10,6 +10,7 @@ var App = require('./routes/AppRoute');
 var Index = require('./routes/IndexRoute');
 var Notes = require('./routes/NotesRoute');
 var NotesIndex = require('./routes/notes/NotesIndexRoute');
+var Note = require('./routes/notes/NoteRoute');
 var NotesNew = require('./routes/notes/NotesNewRoute');
 var Unknown = require('./routes/UnknownRoute');
 
@@ -19,6 +20,7 @@ module.exports = (
       <DefaultRoute handler={Index} />
       <Route name="notes" path="notes" handler={Notes}>
         <DefaultRoute handler={NotesIndex} />
+        <Route name="note" path="/note/:noteID" handler={Note} />
         <Route name="add-note" path="new" handler={NotesNew} />
       </Route>
     </Route>

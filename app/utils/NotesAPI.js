@@ -5,11 +5,18 @@ module.exports = {
   list() {
     return axios.get('/api/notes')
       .then(response => {
-        return response.data.map(note => {
-          var json = note.value;
-          json.id = note.path.key;
+        return response.data.map(item => {
+          var json = item.value;
+          json.id = item.path.key;
           return json;
         });
+      });
+  },
+
+  fetchById(noteID) {
+    return axios.get(`/api/notes/${noteID}`)
+      .then(response => {
+        return response.data;
       });
   },
 
