@@ -6,7 +6,7 @@ var NoteForm = require('../../components/notes/NoteForm');
 var NoteStore = require('../../stores/NoteStore');
 var NoteActions = require('../../actions/NoteActions');
 
-var FooEditRoute = module.exports = React.createClass({
+var NoteEditRoute = module.exports = React.createClass({
   mixins: [ Router.Navigation ],
 
   statics: {
