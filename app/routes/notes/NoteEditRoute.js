@@ -7,7 +7,7 @@ var NoteStore = require('../../stores/NoteStore');
 var NoteActions = require('../../actions/NoteActions');
 
 var FooEditRoute = module.exports = React.createClass({
-  mixins: [ Router.Transitions ],
+  mixins: [ Router.Navigation ],
 
   statics: {
     willTransitionTo(transition, params) {

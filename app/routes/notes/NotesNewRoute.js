@@ -7,7 +7,7 @@ var NoteStore = require('../../stores/NoteStore');
 var NoteActions = require('../../actions/NoteActions');
 
 var FooNewRoute = module.exports = React.createClass({
-  mixins: [ Router.Transitions ],
+  mixins: [ Router.Navigation ],
 
   getInitialState() {
     return {
