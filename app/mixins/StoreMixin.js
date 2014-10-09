@@ -1,6 +1,4 @@
-module.exports = function() {
-  var stores = Array.prototype.slice.call(arguments);
-
+module.exports = function(...stores) {
   return {
 
     getInitialState() {
