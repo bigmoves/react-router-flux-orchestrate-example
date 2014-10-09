@@ -32,7 +32,7 @@ var NoteRoute = module.exports = React.createClass({
   render() {
     var note = this.state.note;
     return (
-      <div>
+      <div className="route">
         <h1>Note</h1>
         <Link to="edit-note" params={{ noteID: note.id }}>Edit note</Link>
         <a href="" onClick={this.handleDelete}>Delete note</a>

@@ -35,7 +35,7 @@ var NoteNewRoute = module.exports = React.createClass({
     }
 
     return (
-      <div>
+      <div className="route">
         <h1>New Note</h1>
         <NoteForm onSubmit={this.handleSubmit} />
         {error}

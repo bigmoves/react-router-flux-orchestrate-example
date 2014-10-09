@@ -27,7 +27,7 @@ var NotesIndexRoute = module.exports = React.createClass({
     }, this);
 
     return (
-      <div>
+      <div className="route">
         <h1>Notes Index</h1>
         <Link to="add-note">Add Note</Link>
         <ul>

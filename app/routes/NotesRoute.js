@@ -1,6 +1,8 @@
 /** @jsx React.DOM */
 
 var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 var NoteStore = require('../stores/NoteStore');
 
 var NotesRoute = module.exports = React.createClass({
@@ -12,8 +14,8 @@ var NotesRoute = module.exports = React.createClass({
 
   render() {
     return (
-      <div>
-        <h1>Notes</h1>
+      <div className="route">
+        <h1><Link to="notes">Notes</Link></h1>
         {this.props.activeRouteHandler()}
       </div>
     );

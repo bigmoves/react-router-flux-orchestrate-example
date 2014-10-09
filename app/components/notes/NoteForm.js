@@ -28,8 +28,8 @@ var NoteForm = module.exports = React.createClass({
 
   render() {
     return (
-      <div>
-        <input
+      <div className="Note__Composer">
+        <textarea
           ref="text"
           type="text"
           placeholder="Enter text..."

@@ -42,7 +42,7 @@ var NoteEditRoute = module.exports = React.createClass({
     }
 
     return (
-      <div>
+      <div className="route">
         <h1>Edit Note</h1>
         <NoteForm
           note={this.state.note}
